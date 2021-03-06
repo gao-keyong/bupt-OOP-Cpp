@@ -6,8 +6,21 @@ class Point
     friend class Circle;
 
 public:
-    Point() : x(0.), y(0.){};
-    Point(double x, double y) : x(x), y(y){};
+    Point() : x(0.), y(0.)
+    {
+        std::cout << "---Construct a Point object and set x = " << x << " and y = " << y << std::endl;
+        system("pause");
+    };
+    Point(double x, double y) : x(x), y(y)
+    {
+        std::cout << "---Construct a Point object and set x = " << x << " and y = " << y << std::endl;
+        system("pause");
+    };
+    ~Point()
+    {
+        std::cout << "---Destruct a Point object. " << std::endl;
+        system("pause");
+    }
     static double dist(const Point &p1, const Point &p2)
     {
         double dx = p1.x - p2.x;
@@ -23,19 +36,37 @@ private:
 class Circle
 {
 public:
-    Circle() : radius(1.){};
-    Circle(double r) : radius(r){};
+    Circle() : radius(1.)
+    {
+        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
+        system("pause");
+    };
+    Circle(double r) : radius(r)
+    {
+        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
+        system("pause");
+    };
     Circle(double x, double y)
     {
         center.x = x;
         center.y = y;
         radius = 1.;
+        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
+        system("pause");
     }
     Circle(double x, double y, double r)
     {
         center.x = x;
         center.y = y;
         radius = r;
+        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << ") and r = " << radius << std::endl;
+        system("pause");
+    }
+    ~Circle()
+    {
+        delete &center;
+        std::cout << "---Destruct a Circle object. " << std::endl;
+        system("pause");
     }
     static bool intersect(const Circle &o1, const Circle &o2)
     {
@@ -67,5 +98,7 @@ int main(int argc, char const *argv[])
     {
         std::cout << "Not intersect. " << std::endl;
     }
+    delete &O1;
+    delete &O2;
     return 0;
 }

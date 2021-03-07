@@ -6,12 +6,8 @@ class Point
     friend class Circle;
 
 public:
-    Point() : x(0.), y(0.)
-    {
-        std::cout << "---Construct a Point object and set x = " << x << " and y = " << y << std::endl;
-        system("pause");
-    };
-    Point(double x, double y) : x(x), y(y)
+    // Constructor with default parameter values
+    Point(double x = 0., double y = 0.) : x(x), y(y)
     {
         std::cout << "---Construct a Point object and set x = " << x << " and y = " << y << std::endl;
         system("pause");
@@ -36,25 +32,12 @@ private:
 class Circle
 {
 public:
-    Circle() : radius(1.)
+    Circle(double r = 1.) : radius(r)
     {
         std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
         system("pause");
     };
-    Circle(double r) : radius(r)
-    {
-        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
-        system("pause");
-    };
-    Circle(double x, double y)
-    {
-        center.x = x;
-        center.y = y;
-        radius = 1.;
-        std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
-        system("pause");
-    }
-    Circle(double x, double y, double r)
+    Circle(double x, double y, double r = 1.)
     {
         center.x = x;
         center.y = y;
@@ -64,13 +47,13 @@ public:
     }
     ~Circle()
     {
-        delete &center;
         std::cout << "---Destruct a Circle object. " << std::endl;
         system("pause");
     }
     static bool intersect(const Circle &o1, const Circle &o2)
     {
-        if (Point::dist(o1.center, o2.center) < o1.radius + o2.radius)
+        double d = Point::dist(o1.center, o2.center);
+        if (d < o1.radius + o2.radius && d > fabs(o1.radius - o2.radius))
         {
             return true;
         }
@@ -98,7 +81,5 @@ int main(int argc, char const *argv[])
     {
         std::cout << "Not intersect. " << std::endl;
     }
-    delete &O1;
-    delete &O2;
     return 0;
 }

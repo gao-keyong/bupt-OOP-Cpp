@@ -163,5 +163,6 @@ int main(int argc, char const *argv[])
     *pA3 = *pA1 - *pA2;
     std::cout << "pA3 = pA1 - pA2 = " << std::endl
               << *pA3;
+    delete pA1,pA2,pA3;
     return 0;
 }

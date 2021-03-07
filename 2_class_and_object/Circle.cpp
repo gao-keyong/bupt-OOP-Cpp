@@ -17,6 +17,16 @@ public:
         std::cout << "---Destruct a Point object. " << std::endl;
         system("pause");
     }
+    friend std::istream &operator>>(std::istream &input, Point &o)
+    {
+        input >> o.x >> o.y;
+        return input;
+    }
+    friend std::ostream &operator<<(std::ostream &output, const Point &o)
+    {
+        output << '(' << o.x << ", " << o.y << ')';
+        return output;
+    }
     static double dist(const Point &p1, const Point &p2)
     {
         double dx = p1.x - p2.x;
@@ -48,6 +58,16 @@ public:
         std::cout << "---Destruct a Circle object. " << std::endl;
         system("pause");
     }
+    friend std::istream &operator>>(std::istream &input, Circle &o)
+    {
+        input >> o.center >> o.radius;
+        return input;
+    }
+    friend std::ostream &operator<<(std::ostream &output, const Circle &o)
+    {
+        output << "O = " << o.center << ", r = " << o.radius;
+        return output;
+    }
     static bool intersect(const Circle &o1, const Circle &o2)
     {
         double d = Point::dist(o1.center, o2.center);
@@ -65,12 +85,11 @@ private:
 
 int main(int argc, char const *argv[])
 {
-    double x1, y1, r1, x2, y2, r2;
+    Circle O1, O2;
     std::cout << "Input (x,y) and r of O1: " << std::endl;
-    std::cin >> x1 >> y1 >> r1;
+    std::cin >> O1;
     std::cout << "Input (x,y) and r of O2: " << std::endl;
-    std::cin >> x2 >> y2 >> r2;
-    Circle O1(x1, y1, r1), O2(x2, y2, r2);
+    std::cin >> O2;
     if (Circle::intersect(O1, O2))
     {
         std::cout << "Intersect. " << std::endl;

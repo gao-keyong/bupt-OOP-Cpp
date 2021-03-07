@@ -37,14 +37,12 @@ public:
         std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << " and r = " << radius << std::endl;
         system("pause");
     };
-    Circle(double x, double y, double r = 1.)
+    Circle(double x, double y, double r = 1.) : center(x, y) // 组合类的构造与析构
     {
-        center.x = x;
-        center.y = y;
         radius = r;
         std::cout << "---Construct a Circle object and set (x, y) = (" << center.x << ", " << center.y << ") and r = " << radius << std::endl;
         system("pause");
-    }
+    };
     ~Circle()
     {
         std::cout << "---Destruct a Circle object. " << std::endl;

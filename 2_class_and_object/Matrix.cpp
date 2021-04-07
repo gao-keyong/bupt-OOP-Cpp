@@ -5,12 +5,12 @@ class Matrix
 {
 public:
     Matrix() = default;
-    Matrix(size_t row, size_t column)
+    Matrix(int row, int column)
     {
         this->row = row;
         this->column = column;
         p = new T *[row];
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
             p[i] = new T[column];
         }
@@ -20,10 +20,10 @@ public:
         this->row = o.row;
         this->column = o.column;
         p = new T *[row];
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
             p[i] = new T[column];
-            for (size_t j = 0; j < column; j++)
+            for (int j = 0; j < column; j++)
             {
                 p[i][j] = o.p[i][j];
             }
@@ -31,7 +31,7 @@ public:
     }
     ~Matrix()
     {
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
             delete[] p[i];
         }
@@ -41,9 +41,9 @@ public:
     // because it would be called without creating an object.
     friend std::ostream &operator<<(std::ostream &output, const Matrix &o)
     {
-        for (size_t i = 0; i < o.row; i++)
+        for (int i = 0; i < o.row; i++)
         {
-            for (size_t j = 0; j < o.column; j++)
+            for (int j = 0; j < o.column; j++)
             {
                 output << o.p[i][j] << ' ';
             }
@@ -53,16 +53,16 @@ public:
     }
     friend std::istream &operator>>(std::istream &input, Matrix &o)
     {
-        for (size_t i = 0; i < o.row; i++)
+        for (int i = 0; i < o.row; i++)
         {
-            for (size_t j = 0; j < o.column; j++)
+            for (int j = 0; j < o.column; j++)
             {
                 input >> o.p[i][j];
             }
         }
         return input;
     }
-    T *operator[](const size_t idx)
+    T *operator[](const int idx)
     {
         return p[idx];
     }
@@ -73,9 +73,9 @@ public:
             throw "Dimension Error";
         }
         Matrix res(o);
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
-            for (size_t j = 0; j < column; j++)
+            for (int j = 0; j < column; j++)
             {
                 res.p[i][j] += this->p[i][j];
             }
@@ -89,9 +89,9 @@ public:
             throw "Dimension Error";
         }
         Matrix res(*this);
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
-            for (size_t j = 0; j < column; j++)
+            for (int j = 0; j < column; j++)
             {
                 res[i][j] -= o.p[i][j];
             }
@@ -108,16 +108,16 @@ public:
         column = rhs.column;
         T **pOld = p;
         p = new T *[row];
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
             p[i] = new T[column];
-            for (size_t j = 0; j < column; j++)
+            for (int j = 0; j < column; j++)
             {
                 p[i][j] = rhs.p[i][j];
             }
         }
         // release old element
-        for (size_t i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
         {
             delete[] pOld[i];
         }

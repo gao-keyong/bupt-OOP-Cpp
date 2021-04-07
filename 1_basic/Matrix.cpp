@@ -9,25 +9,25 @@ public:
     Matrix()
     {
         mat = new int *[ROW];
-        for (size_t i = 0; i < ROW; i++)
+        for (int i = 0; i < ROW; i++)
         {
             mat[i] = new int[COLUMN];
-            for (size_t j = 0; j < COLUMN; j++)
+            for (int j = 0; j < COLUMN; j++)
             {
                 mat[i][j] = 0;
             }
         }
     }
-    int *operator[](const size_t idx)
+    int *operator[](const int idx)
     {
         return mat[idx];
     }
     Matrix operator+(const Matrix &rhs)
     {
         Matrix res;
-        for (size_t i = 0; i < ROW; i++)
+        for (int i = 0; i < ROW; i++)
         {
-            for (size_t j = 0; j < COLUMN; j++)
+            for (int j = 0; j < COLUMN; j++)
             {
                 res[i][j] = this->mat[i][j] + rhs.mat[i][j];
             }
@@ -37,9 +37,9 @@ public:
     Matrix operator-(const Matrix &rhs)
     {
         Matrix res;
-        for (size_t i = 0; i < ROW; i++)
+        for (int i = 0; i < ROW; i++)
         {
-            for (size_t j = 0; j < COLUMN; j++)
+            for (int j = 0; j < COLUMN; j++)
             {
                 res[i][j] = this->mat[i][j] - rhs.mat[i][j];
             }
@@ -48,9 +48,9 @@ public:
     }
     void init()
     {
-        for (size_t i = 0; i < ROW; i++)
+        for (int i = 0; i < ROW; i++)
         {
-            for (size_t j = 0; j < COLUMN; j++)
+            for (int j = 0; j < COLUMN; j++)
             {
                 std::cin >> mat[i][j];
             }
@@ -58,9 +58,9 @@ public:
     }
     void print()
     {
-        for (size_t i = 0; i < ROW; i++)
+        for (int i = 0; i < ROW; i++)
         {
-            for (size_t j = 0; j < COLUMN; j++)
+            for (int j = 0; j < COLUMN; j++)
             {
                 std::cout << mat[i][j] << ' ';
             }

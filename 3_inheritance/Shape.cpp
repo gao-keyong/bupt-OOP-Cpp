@@ -12,7 +12,6 @@ public:
         std::cout << "---Construct an object of Shape" << std::endl;
         system("pause");
     }
-    // 定义虚函数，从而令派生类负责改写并使用不同的面积计算函数
     double area();
     // 继承关系中根节点的类通常要定义一个虚析构函数
     virtual ~Shape()

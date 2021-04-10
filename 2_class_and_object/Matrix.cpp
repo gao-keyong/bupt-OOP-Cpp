@@ -37,8 +37,7 @@ public:
         }
         delete[] p;
     }
-    // make operator overloading function a friend of the class
-    // because it would be called without creating an object.
+    // C++ Primer P495 IO运算符通常需要读写类的非公有数据成员，所以IO运算符一般被声明为友元
     friend std::ostream &operator<<(std::ostream &output, const Matrix &o)
     {
         for (int i = 0; i < o.row; i++)

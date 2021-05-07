@@ -18,11 +18,19 @@ public:
             }
         }
     }
-    int *operator[](const int idx)
+    ~Matrix()
+    {
+        for (int i = 0; i < ROW; i++)
+        {
+            delete[] mat[i];
+        }
+        delete[] mat;
+    }
+    int *operator[](const int idx) const
     {
         return mat[idx];
     }
-    Matrix operator+(const Matrix &rhs)
+    const Matrix operator+(const Matrix &rhs)
     {
         Matrix res;
         for (int i = 0; i < ROW; i++)
@@ -34,7 +42,7 @@ public:
         }
         return res;
     }
-    Matrix operator-(const Matrix &rhs)
+    const Matrix operator-(const Matrix &rhs)
     {
         Matrix res;
         for (int i = 0; i < ROW; i++)

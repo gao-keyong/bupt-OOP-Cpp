@@ -65,7 +65,7 @@ public:
     {
         return p[idx];
     }
-    Matrix operator+(const Matrix &o)
+    const Matrix operator+(const Matrix &o)
     {
         if (this->row != o.row || this->column != o.column)
         {
@@ -81,7 +81,7 @@ public:
         }
         return res;
     }
-    Matrix operator-(const Matrix &o)
+    const Matrix operator-(const Matrix &o)
     {
         if (this->row != o.row || this->column != o.column)
         {

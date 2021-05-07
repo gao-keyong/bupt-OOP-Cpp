@@ -12,7 +12,8 @@ public:
         std::cout << "---Construct an object of Shape" << std::endl;
         system("pause");
     }
-    double area() const{
+    double area() const
+    {
         return 0.;
     }
     // 继承关系中根节点的类通常要定义一个虚析构函数
@@ -94,7 +95,7 @@ int main(int argc, char const *argv[])
     std::cout << pO->area() << std::endl;
     Shape *pSq = new Square(6.4);
     std::cout << pSq->area() << std::endl;
-    Shape *pSh=new Shape();
+    Shape *pSh = new Shape();
     // 上述语句这样的定义能通过编译，但显然毫无意义，应当将Shape定义为抽象基类，不允许定义类型为Shape的对象
     delete pRec;
     delete pO;
